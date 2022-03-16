@@ -19,8 +19,8 @@ const getTemplate = ( name, token ) => {
 
 
 const mail = {
-	user: 'edward.jay@hotmail.com',
-	pass: '180900'
+	user: process.env.MAIL,
+	pass: process.env.MAIL_PASSWORD
 }
 
 const sendEmail = async( email, subject, html ) => {
