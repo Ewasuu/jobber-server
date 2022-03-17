@@ -54,10 +54,10 @@ const googleSignIn = async(req, res) => {
 
 	try{
 
-		const { correo, name, img } = await googleVerify(id_token)
+		const { email, name, img } = await googleVerify(id_token)
 
 		//Verificar que la cuenta no esté ya registrada
-		let user = await User.findOne({ correo })
+		let user = await User.findOne({ email })
 
 		if (!user) {
 			const data = {
@@ -73,7 +73,7 @@ const googleSignIn = async(req, res) => {
 			await user.save()
 		}
 
-		const token = await generateJWT( user.id )
+		const token = await generateJWT( user._id )
 
 		res.json({
 			success: true,
