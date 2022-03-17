@@ -8,6 +8,7 @@ const validateJWT = async(req, res, next) => {
 
 	if (!token) {
 		res.status(401).json({
+			success: false,
 			msg: "There are no tokens in the header"
 		})
 	}
@@ -27,7 +28,8 @@ const validateJWT = async(req, res, next) => {
 		//Verificar si el usuario está activo
 		if (!user.estate) {
 			return res.status(400).json({
-				msg: "This user is innactive, can't do anything"
+				success: false,
+				msg: "This user can't log in"
 			})
 		}
 
@@ -38,6 +40,7 @@ const validateJWT = async(req, res, next) => {
 	}catch(error){
 		console.log(error)
 		res.status(401).json({
+			success: false,
 			msg: 'Invalid token'
 		})
 	}

@@ -92,7 +92,7 @@ const confirmAccount = async( req, res ) => {
     } catch(err){
         return res.status(500).json({
             success: false,
-            msg: 'Something went wrong'
+            msg: 'Something went wrong, please try again later'
         })
     }
 
@@ -105,7 +105,7 @@ const sendConfirmationEmailAgain = async(req, res) => {
     if (!user) {
         return res.status(400).json({
             success: false,
-            msg: 'Please try again later'
+            msg: 'Something went wrong, please try again later'
         })
     }
 
