@@ -34,6 +34,7 @@ const login = async( req, res ) => {
     const validPassword = bcrypt.compareSync( password, user.password )
     if (!validPassword) {
         return res.status(401).json({
+        	success: false,
             msg: 'wrong password'
         })
     }
@@ -41,6 +42,7 @@ const login = async( req, res ) => {
     const token = await generateJWT( user._id )
 
     res.json({
+    	success: true,
         user,
         token
     })
@@ -74,6 +76,7 @@ const googleSignIn = async(req, res) => {
 		const token = await generateJWT( user.id )
 
 		res.json({
+			success: true,
 			user,
 			token
 		})
@@ -81,7 +84,7 @@ const googleSignIn = async(req, res) => {
 	} catch(error){
 		console.log(error)
 		res.status(400).json({
-			msg: ''
+			msg: 'Something went wrong, please try again later'
 		})
 	}
 }
