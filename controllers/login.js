@@ -54,7 +54,7 @@ const googleSignIn = async(req, res) => {
 
 	try{
 
-		const { correo, nombre, img } = await googleVerify(id_token)
+		const { correo, name, img } = await googleVerify(id_token)
 
 		//Verificar que la cuenta no esté ya registrada
 		let user = await User.findOne({ correo })
