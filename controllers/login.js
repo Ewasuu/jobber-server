@@ -89,7 +89,25 @@ const googleSignIn = async(req, res) => {
 	}
 }
 
+const keepSession = async( req, res ) => {
+
+	const { authenticatedUser } = req
+
+
+	const token = await generateJWT( authenticatedUser._id )
+
+	res.json({
+		success: true,
+		authenticatedUser,
+		token
+	})
+
+
+
+}
+
 module.exports = {
     login,
-    googleSignIn
+    googleSignIn,
+    keepSession
 }
