@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer')
 
 
-const getTemplate = ( name, token ) => {
+const getTemplate = ( name, path ) => {
 	return `<head>
 			    <link rel="stylesheet" href="../public/style.css">
 				</head>
@@ -11,7 +11,7 @@ const getTemplate = ( name, token ) => {
 				    <h2>Hi ${name} !! Thanks for joining us</h2>
 				    <p>Please follow this link and confirm your account</p>
 				    <a
-				        href="http://localhost:3000/confirm/${token}"
+				        href="${path}"
 				        target="_blank"
 				    >Confirm account</a>
 				</div>`

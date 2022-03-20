@@ -32,11 +32,11 @@ const createUser = async( req, res ) => {
 
     const token = await generateJWT( user._id )
 
-    const template = getTemplate( user.name, token )
+    const path = `http://localhost:3000/api/user/${token}`
+
+    const template = getTemplate( user.name, path )
 
     const subject = 'Confirm Your Accout!!'
-
-    console.log( user.email )
 
     await sendEmail( user.email, subject, template )
 
