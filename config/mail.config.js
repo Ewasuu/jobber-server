@@ -22,31 +22,26 @@ const getTemplate = ( name, path ) => {
 
 const sendEmail = async( email, subject, html ) => {
 
-	const mail = {
-		user: process.env.MAIL,
-		pass: process.env.MAIL_PASSWORD
-	}
-	console.log(mail.user, mail.pass)
 
 	let transporter = nodemailer.createTransport({
-	   host: "smtp.office365.com",
-	   port: 587,
-	   secure: false, // true for 465, false for other ports
+	   host: process.env.SMTP,
+	   port: process.env.EMAIL_PORT,
+	   secure: process.env.EMAIL_SECURE, // true for 465, false for other ports
 	   auth: {
-	     user: mail.user, // generated ethereal user
-	     pass: mail.pass, // generated ethereal password
+	     user: process.env.MAIL, // generated ethereal user
+	     pass: process.env.MAIL_PASSWORD, // generated ethereal password
 	   },
 	})
 	try{
 		await transporter.sendMail({
-		   from: `Jobber <${mail.user}>`, // sender address
+		   from: `Jobber <${process.env.MAIL}>`, // sender address
 		   to: email, // list of receivers
 		   subject: subject, // Subject line
-		   text: "Hello world?", // plain text body
+		   text: "Hello!", // plain text body
 		   html: html
 		})
 	} catch(err){
-		console.log(err)
+		throw new Error(err)
 	}
 
 }
