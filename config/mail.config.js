@@ -3,18 +3,32 @@ const nodemailer = require('nodemailer')
 
 const getTemplate = ( name, path ) => {
 	return `<head>
-			    <link rel="stylesheet" href="../public/style.css">
-				</head>
+			      <style>
+				    .big__logo{
+				      position: relative;
+				      font-size: 3rem;
+				      margin-left: 10px;
+				      margin-bottom: 2rem;
+				      color: #000000;
+				    }
+				    .span {
+				        color: #ff3c01;
+				        font-size: 5.5rem;
+				    }
+				  </style>
+			</head>
 
+			<body>
 				<div id="email___content">
-				    <h1 class="big__logo" >obber</h1>
+				    <h1 class="big__logo" ><span class="span" >J</span>obber</h1>
 				    <h2>Hi ${name} !! Thanks for joining us</h2>
 				    <p>Please follow this link and confirm your account</p>
 				    <a
 				        href="${path}"
 				        target="_blank"
 				    >Confirm account</a>
-				</div>`
+				</div>
+			</body>`
 }
 
 
@@ -34,7 +48,7 @@ const sendEmail = async( email, subject, html ) => {
 	})
 	try{
 		await transporter.sendMail({
-		   from: `Jobber <${process.env.MAIL}>`, // sender address
+		   from: `Edward from Jobber <${process.env.MAIL}>`, // sender address
 		   to: email, // list of receivers
 		   subject: subject, // Subject line
 		   text: "Hello!", // plain text body
