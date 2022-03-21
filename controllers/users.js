@@ -32,7 +32,7 @@ const createUser = async( req, res ) => {
 
     const token = await generateJWT( user._id )
 
-    const path = `http://localhost:3000/api/user/${token}`
+    const path = `https://jobberr.herokuapp.com/confirm/${token}`
 
     const template = getTemplate( user.name, path )
 
