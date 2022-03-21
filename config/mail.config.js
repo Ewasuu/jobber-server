@@ -27,6 +27,9 @@ const sendEmail = async( email, subject, html ) => {
 	   host: process.env.SMTP,
 	   port: process.env.EMAIL_PORT,
 	   secure: process.env.EMAIL_SECURE, // true for 465, false for other ports
+	   tls: {
+       		ciphers:'SSLv3'
+    	},
 	   auth: {
 	     user: process.env.MAIL, // generated ethereal user
 	     pass: process.env.MAIL_PASSWORD, // generated ethereal password
