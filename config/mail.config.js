@@ -44,7 +44,7 @@ const sendEmail = async( email, subject, html ) => {
 		   html: html
 		})
 	} catch(err){
-		throw new Error(err)
+		console.log(err)
 	}
 
 }
