@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors')
+const history = require('connect-history-api-fallback')
 
 const { dbConnection } = require('../database/connection.js')
 
@@ -23,11 +24,14 @@ class Server{
 
     middlewares() {
 
+        this.app.use(history())
+
         this.app.use( express.static('public') )
 
         this.app.use( express.json() )
 
         this.app.use( cors() )
+
     }
 
     async conectarDB(){
