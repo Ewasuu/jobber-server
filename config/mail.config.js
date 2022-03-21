@@ -26,6 +26,7 @@ const sendEmail = async( email, subject, html ) => {
 		user: process.env.MAIL,
 		pass: process.env.MAIL_PASSWORD
 	}
+	console.log(mail.user, mail.pass)
 
 	let transporter = nodemailer.createTransport({
 	   host: "smtp.office365.com",
