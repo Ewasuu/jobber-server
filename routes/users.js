@@ -31,7 +31,7 @@ router.put('/:id', [
     validateFields
 ], updateUser)
 
-router.get('/email', [
+router.post('/email', [
     check('email', 'An email is required'),
     validateFields
     ] ,sendConfirmationEmailAgain)

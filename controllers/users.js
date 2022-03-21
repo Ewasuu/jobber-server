@@ -120,7 +120,7 @@ const sendConfirmationEmailAgain = async(req, res) => {
 
     res.json({
         success: true,
-        msg: 'Your accout has been successfully confirmed',
+        msg: 'We has resend the confirmation email',
         email
     })
 
